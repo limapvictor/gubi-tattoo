@@ -1,0 +1,2 @@
+module TatuagemsHelper
+end

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tatuadors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Cpf</th>
+      <th>Numerodeseguidores</th>
+      <th>Instagram</th>
+      <th>Celular</th>
+      <th>Senha</th>
+      <th>Sobre</th>
+      <th>Foto.string</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tatuadors.each do |tatuador| %>
+      <tr>
+        <td><%= tatuador.Nome %></td>
+        <td><%= tatuador.Email %></td>
+        <td><%= tatuador.CPF %></td>
+        <td><%= tatuador.NumeroDeSeguidores %></td>
+        <td><%= tatuador.Instagram %></td>
+        <td><%= tatuador.Celular %></td>
+        <td><%= tatuador.Senha %></td>
+        <td><%= tatuador.Sobre %></td>
+        <td><%= tatuador.Foto.string %></td>
+        <td><%= link_to 'Show', tatuador %></td>
+        <td><%= link_to 'Edit', edit_tatuador_path(tatuador) %></td>
+        <td><%= link_to 'Destroy', tatuador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tatuador', new_tatuador_path %>

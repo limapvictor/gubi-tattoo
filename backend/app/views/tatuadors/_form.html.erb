@@ -1,0 +1,62 @@
+<%= form_with(model: tatuador, local: true) do |form| %>
+  <% if tatuador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tatuador.errors.count, "error") %> prohibited this tatuador from being saved:</h2>
+
+      <ul>
+        <% tatuador.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Nome %>
+    <%= form.text_field :Nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Email %>
+    <%= form.text_field :Email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :CPF %>
+    <%= form.text_field :CPF %>
+  </div>
+
+  <div class="field">
+    <%= form.label :NumeroDeSeguidores %>
+    <%= form.number_field :NumeroDeSeguidores %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Instagram %>
+    <%= form.text_field :Instagram %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Celular %>
+    <%= form.text_field :Celular %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Senha %>
+    <%= form.text_field :Senha %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Sobre %>
+    <%= form.text_area :Sobre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Foto.string %>
+    <%= form.text_field :Foto.string %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Estudios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Cnpj</th>
+      <th>Instagram</th>
+      <th>Facebook</th>
+      <th>Cep</th>
+      <th>Estado</th>
+      <th>Cidade</th>
+      <th>Bairro</th>
+      <th>Rua</th>
+      <th>Numero</th>
+      <th>Complemento</th>
+      <th>Senha</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estudios.each do |estudio| %>
+      <tr>
+        <td><%= estudio.Nome %></td>
+        <td><%= estudio.Email %></td>
+        <td><%= estudio.CNPJ %></td>
+        <td><%= estudio.Instagram %></td>
+        <td><%= estudio.Facebook %></td>
+        <td><%= estudio.CEP %></td>
+        <td><%= estudio.Estado %></td>
+        <td><%= estudio.Cidade %></td>
+        <td><%= estudio.Bairro %></td>
+        <td><%= estudio.Rua %></td>
+        <td><%= estudio.Numero %></td>
+        <td><%= estudio.Complemento %></td>
+        <td><%= estudio.Senha %></td>
+        <td><%= link_to 'Show', estudio %></td>
+        <td><%= link_to 'Edit', edit_estudio_path(estudio) %></td>
+        <td><%= link_to 'Destroy', estudio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estudio', new_estudio_path %>

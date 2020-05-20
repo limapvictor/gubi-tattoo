@@ -1,0 +1,42 @@
+<%= form_with(model: tatuagem, local: true) do |form| %>
+  <% if tatuagem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tatuagem.errors.count, "error") %> prohibited this tatuagem from being saved:</h2>
+
+      <ul>
+        <% tatuagem.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Titulo %>
+    <%= form.text_field :Titulo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Link %>
+    <%= form.text_field :Link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :NumeroSalvos %>
+    <%= form.text_field :NumeroSalvos %>
+  </div>
+
+  <div class="field">
+    <%= form.label : %>
+    <%= form.number_field : %>
+  </div>
+
+  <div class="field">
+    <%= form.label :IdTatuador %>
+    <%= form.number_field :IdTatuador %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
