@@ -1,13 +1,15 @@
 class Usuario < ApplicationRecord
+    has_many :tatuadors, through: :acompanhas
+    has_many :tatuagens, through: :salvas
+    has_many :caracteristicas, through: :segues
+    has_many :acompanhas
+    has_many :salvas
+    has_many :segues
 
-    validate Email unique: true
-    validate CPF unique: true
-    validate NomeDeUsuario unique: true
-    
-    validate Nome presence: true
-    validate Email presence: true
-    validate CPF presence: true
-    validate NomeDeUsuario presence: true
-    validate Senha presence: true
+    validates :Nome ,presence: true
+    validates :Email ,presence: true
+    validates :CPF ,presence: true
+    validates :NomeDeUsuario ,presence: true
+    validates :Senha ,presence: true
 
 end

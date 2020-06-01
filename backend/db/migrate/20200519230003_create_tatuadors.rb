@@ -1,4 +1,4 @@
-class CreateTatuador < ActiveRecord::Migration[6.0]
+class CreateTatuadors < ActiveRecord::Migration[6.0]
   def change
     create_table :tatuadors do |t|
       t.string :Nome

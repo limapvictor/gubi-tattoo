@@ -9,7 +9,7 @@ one:
   Celular: MyString
   Senha: MyString
   Sobre: MyText
-  Foto.string: MyString
+  Foto: MyString
 
 two:
   Nome: MyString
@@ -20,4 +20,4 @@ two:
   Celular: MyString
   Senha: MyString
   Sobre: MyText
-  Foto.string: MyString
+  Foto: MyString

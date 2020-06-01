@@ -17,7 +17,7 @@ class TatuadorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tatuador" do
     assert_difference('Tatuador.count') do
-      post tatuadors_url, params: { tatuador: { CPF: @tatuador.CPF, Celular: @tatuador.Celular, Email: @tatuador.Email, Foto.string: @tatuador.Foto.string, Instagram: @tatuador.Instagram, Nome: @tatuador.Nome, NumeroDeSeguidores: @tatuador.NumeroDeSeguidores, Senha: @tatuador.Senha, Sobre: @tatuador.Sobre } }
+      post tatuadors_url, params: { tatuador: { CPF: @tatuador.CPF, Celular: @tatuador.Celular, Email: @tatuador.Email, Foto: @tatuador.Foto, Instagram: @tatuador.Instagram, Nome: @tatuador.Nome, NumeroDeSeguidores: @tatuador.NumeroDeSeguidores, Senha: @tatuador.Senha, Sobre: @tatuador.Sobre } }
     end
 
     assert_redirected_to tatuador_url(Tatuador.last)
@@ -34,7 +34,7 @@ class TatuadorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tatuador" do
-    patch tatuador_url(@tatuador), params: { tatuador: { CPF: @tatuador.CPF, Celular: @tatuador.Celular, Email: @tatuador.Email, Foto.string: @tatuador.Foto.string, Instagram: @tatuador.Instagram, Nome: @tatuador.Nome, NumeroDeSeguidores: @tatuador.NumeroDeSeguidores, Senha: @tatuador.Senha, Sobre: @tatuador.Sobre } }
+    patch tatuador_url(@tatuador), params: { tatuador: { CPF: @tatuador.CPF, Celular: @tatuador.Celular, Email: @tatuador.Email, Foto: @tatuador.Foto, Instagram: @tatuador.Instagram, Nome: @tatuador.Nome, NumeroDeSeguidores: @tatuador.NumeroDeSeguidores, Senha: @tatuador.Senha, Sobre: @tatuador.Sobre } }
     assert_redirected_to tatuador_url(@tatuador)
   end
 

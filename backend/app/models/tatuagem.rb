@@ -1,9 +1,13 @@
 class Tatuagem < ApplicationRecord
     belongs_to :Tatuador
-
-    validate Link unique: true
+    belongs_to :Estudio
+    has_many :caracteristicas, through: :possuis
+    has_many :usuarios, through: :salvas
+    has_many :salvas
+    has_many :possuis
     
-    validate Titulo presence: true
-    validate Link presence: true
+    
+    validates :Titulo ,presence: true
+    validates :Link ,presence: true
 
 end

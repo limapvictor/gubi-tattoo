@@ -17,7 +17,7 @@ class TatuadorsTest < ApplicationSystemTestCase
     fill_in "Cpf", with: @tatuador.CPF
     fill_in "Celular", with: @tatuador.Celular
     fill_in "Email", with: @tatuador.Email
-    fill_in "Foto.string", with: @tatuador.Foto.string
+    fill_in "Foto", with: @tatuador.Foto
     fill_in "Instagram", with: @tatuador.Instagram
     fill_in "Nome", with: @tatuador.Nome
     fill_in "Numerodeseguidores", with: @tatuador.NumeroDeSeguidores
@@ -36,7 +36,7 @@ class TatuadorsTest < ApplicationSystemTestCase
     fill_in "Cpf", with: @tatuador.CPF
     fill_in "Celular", with: @tatuador.Celular
     fill_in "Email", with: @tatuador.Email
-    fill_in "Foto.string", with: @tatuador.Foto.string
+    fill_in "Foto", with: @tatuador.Foto
     fill_in "Instagram", with: @tatuador.Instagram
     fill_in "Nome", with: @tatuador.Nome
     fill_in "Numerodeseguidores", with: @tatuador.NumeroDeSeguidores

@@ -5,7 +5,7 @@ class CreateTatuagems < ActiveRecord::Migration[6.0]
       t.string :Link, unique: true
       t.string :NumeroSalvos
       t.belongs_to :Tatuador
-
+      t.belongs_to :Estudio
     end
   end
 end
