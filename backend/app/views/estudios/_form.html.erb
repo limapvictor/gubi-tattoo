@@ -1,0 +1,82 @@
+<%= form_with(model: estudio, local: true) do |form| %>
+  <% if estudio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estudio.errors.count, "error") %> prohibited this estudio from being saved:</h2>
+
+      <ul>
+        <% estudio.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Nome %>
+    <%= form.text_field :Nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Email %>
+    <%= form.text_field :Email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :CNPJ %>
+    <%= form.text_field :CNPJ %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Instagram %>
+    <%= form.text_field :Instagram %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Facebook %>
+    <%= form.text_field :Facebook %>
+  </div>
+
+  <div class="field">
+    <%= form.label :CEP %>
+    <%= form.text_field :CEP %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Estado %>
+    <%= form.text_field :Estado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Cidade %>
+    <%= form.text_field :Cidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Bairro %>
+    <%= form.text_field :Bairro %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Rua %>
+    <%= form.text_field :Rua %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Numero %>
+    <%= form.text_field :Numero %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Complemento %>
+    <%= form.text_field :Complemento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Senha %>
+    <%= form.text_field :Senha %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

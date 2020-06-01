@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @tatuador.Nome %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @tatuador.Email %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @tatuador.CPF %>
+</p>
+
+<p>
+  <strong>Numerodeseguidores:</strong>
+  <%= @tatuador.NumeroDeSeguidores %>
+</p>
+
+<p>
+  <strong>Instagram:</strong>
+  <%= @tatuador.Instagram %>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @tatuador.Celular %>
+</p>
+
+<p>
+  <strong>Senha:</strong>
+  <%= @tatuador.Senha %>
+</p>
+
+<p>
+  <strong>Sobre:</strong>
+  <%= @tatuador.Sobre %>
+</p>
+
+<p>
+  <strong>Foto.string:</strong>
+  <%= @tatuador.Foto.string %>
+</p>
+
+<%= link_to 'Edit', edit_tatuador_path(@tatuador) %> |
+<%= link_to 'Back', tatuadors_path %>
