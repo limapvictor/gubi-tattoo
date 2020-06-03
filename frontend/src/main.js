@@ -4,6 +4,8 @@ import router from './router';
 import store from './store';
 
 import './assets/css/tailwind.css';
+import 'font-awesome/css/font-awesome.css';
+
 
 Vue.config.productionTip = false;
 
