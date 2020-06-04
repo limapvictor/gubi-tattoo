@@ -1,6 +1,6 @@
 class Tatuagem < ApplicationRecord
-    belongs_to :Tatuador
-    belongs_to :Estudio
+    belongs_to :Tatuador, required: false
+    belongs_to :Estudio, required: false
     has_many :caracteristicas, through: :possuis
     has_many :usuarios, through: :salvas
     has_many :salvas

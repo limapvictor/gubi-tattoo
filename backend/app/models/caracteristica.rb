@@ -1,6 +1,6 @@
 class Caracteristica < ApplicationRecord
     has_many :usuarios, through: :segues
-    has_many :tatuadore, through: :especializado_ems
+    has_many :tatuadors, through: :especializado_ems
     has_many :tatuagems, through: :possuis
     has_many :possuis
     has_many :segues

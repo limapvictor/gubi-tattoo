@@ -69,6 +69,6 @@ class TatuagemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tatuagem_params
-      params.require(:tatuagem).permit(:Titulo, :Link, :NumeroSalvos, :IdTatuador, :IdEstudio)
+      params.require(:tatuagem).permit(:Titulo, :Link, :NumeroSalvos, :Tatuador_id, :estudio_id)
     end
 end
