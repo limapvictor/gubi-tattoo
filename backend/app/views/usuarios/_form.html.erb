@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :Email %>
-    <%= form.text_field :Email %>
+    <%= form.email_field :Email %>
   </div>
 
   <div class="field">
@@ -27,13 +27,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :NomeDeUsuario %>
+    <%= form.label "Nome de Usuario" %>
     <%= form.text_field :NomeDeUsuario %>
   </div>
 
   <div class="field">
-    <%= form.label :Senha %>
-    <%= form.text_field :Senha %>
+    <%= form.label "Password:" %>
+    <%= form.password_field :password %>
   </div>
 
   <div class="actions">

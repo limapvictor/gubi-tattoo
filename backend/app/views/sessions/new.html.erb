@@ -1,0 +1,28 @@
+<h1>Iniciar Sessão</h1>
+
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
+
+<%= form_with(scope: :session, url: login_path, local: true) do |form| %>
+ 
+  <div class="field">
+    <%= form.label :Email %>
+    <%= form.email_field :Email %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Password:" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Log In" %>
+  </div>
+  
+<% end %>
+
+
+<%= link_to 'Back', usuarios_path %>

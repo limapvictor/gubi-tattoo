@@ -114,6 +114,7 @@ GEM
     arrayfields (4.9.2)
     ast (2.4.0)
     backports (3.17.2)
+    bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
@@ -401,6 +402,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    unf_ext (0.0.7.7-x64-mingw32)
     unparser (0.2.8)
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2.0)
@@ -434,6 +436,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)

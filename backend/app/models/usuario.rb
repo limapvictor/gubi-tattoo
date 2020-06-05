@@ -10,6 +10,8 @@ class Usuario < ApplicationRecord
     validates :Email ,presence: true
     validates :CPF ,presence: true
     validates :NomeDeUsuario ,presence: true
-    validates :Senha ,presence: true
+ 
 
+    has_secure_password
+    
 end
