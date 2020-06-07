@@ -292,7 +292,7 @@ GEM
     path_expander (1.1.0)
     procto (0.0.3)
     public_suffix (4.0.5)
-    puma (4.3.4)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-proxy (0.6.5)
@@ -451,7 +451,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   metric_fu
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.3, >= 6.0.3.1)
   rspec-core!
   rspec-expectations!
