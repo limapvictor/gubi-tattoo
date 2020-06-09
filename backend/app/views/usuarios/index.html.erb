@@ -21,8 +21,10 @@
         <td><%= usuario.CPF %></td>
         <td><%= usuario.NomeDeUsuario %></td>
         <td><%= link_to 'Show', usuario %></td>
-        <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
-        <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if logado? && usuario.NomeDeUsuario == @usuario_atual.NomeDeUsuario %>
+        <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
+        <td><%= link_to 'Excluir meu perfil', usuario_path(usuario_atual), method: :delete, data: {confirm: "Você é corno?"} %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,6 @@
 
 <br>
 
+<% if !logado? %>
 <%= link_to 'New Usuario', new_usuario_path %>
+<%end%>

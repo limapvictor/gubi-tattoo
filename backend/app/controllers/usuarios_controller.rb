@@ -1,5 +1,7 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+  before_action :requer_usuario, except: [:show, :new, :create]
+  before_action :requer_mesmo_usuario, only: [:edit, :update, :destroy]
 
   # GET /usuarios
   # GET /usuarios.json
@@ -28,6 +30,7 @@ class UsuariosController < ApplicationController
 
     respond_to do |format|
       if @usuario.save
+        session[:usuario_id] = @usuario.id
         format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
         format.json { render :show, status: :created, location: @usuario }
       else
@@ -55,10 +58,9 @@ class UsuariosController < ApplicationController
   # DELETE /usuarios/1.json
   def destroy
     @usuario.destroy
-    respond_to do |format|
-      format.html { redirect_to usuarios_url, notice: 'Usuario was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    session[:usuario_id] = nil
+    redirect_to root_path
+    flash.alert = "Usuario deletado com sucesso."
   end
 
   private
@@ -71,4 +73,13 @@ class UsuariosController < ApplicationController
     def usuario_params
       params.require(:usuario).permit(:Nome, :Email, :CPF, :NomeDeUsuario, :password)
     end
+
+    def requer_mesmo_usuario
+      if usuario_atual != @usuario
+        flash.alert = "Você só pode deletar ou editar o próprio perfil!"
+        redirect_to usuarios_path
+      end
+    end
+
+
 end
