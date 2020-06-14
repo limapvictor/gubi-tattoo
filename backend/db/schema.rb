@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_214408) do
+ActiveRecord::Schema.define(version: 2020_06_11_162734) do
 
   create_table "caracteristicas", force: :cascade do |t|
     t.string "Descricao"
@@ -63,6 +63,12 @@ ActiveRecord::Schema.define(version: 2020_06_05_214408) do
     t.string "CPF"
     t.string "NomeDeUsuario"
     t.string "password_digest"
+    t.string "TipoDeConta"
+    t.string "Foto"
+    t.text "Sobre"
+    t.string "Celular"
+    t.string "Instagram"
+    t.integer "NumeroDeSeguidores"
   end
 
 end

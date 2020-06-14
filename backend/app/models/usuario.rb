@@ -7,9 +7,9 @@ class Usuario < ApplicationRecord
     has_many :segues
 
     validates :Nome ,presence: true
-    validates :Email ,presence: true
-    validates :CPF ,presence: true
-    validates :NomeDeUsuario ,presence: true
+    validates :Email ,presence: true, uniqueness: true
+    validates :CPF ,presence: true, uniqueness: true
+    validates :NomeDeUsuario ,presence: true, uniqueness: true
  
 
     has_secure_password

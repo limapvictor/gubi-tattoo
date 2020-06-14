@@ -22,21 +22,45 @@
   </div>
 
   <div class="field">
-    <%= form.label :CPF %>
-    <%= form.text_field :CPF %>
-  </div>
-
-  <div class="field">
     <%= form.label "Nome de Usuario" %>
     <%= form.text_field :NomeDeUsuario %>
   </div>
 
-  <div class="field">
+   <div class="field">
     <%= form.label "Password:" %>
     <%= form.password_field :password %>
   </div>
 
+  <div class="field">
+    <%= form.label :CPF %>
+    <%= form.text_field :CPF %>
+  </div>
+ 
+  <div class="field">
+  <%= form.label "Tipo De Conta:" %>
+  <%= form.select(:TipoDeConta, raw('<option value="Comum">Conta Comum</option>
+                                     <option value="Tatuador">Tatuador</option>
+                                    <option value="Estudio">Estudio</option>')) %>
+
+
+  <% if @usuario.TipoDeConta == "Tatuador" %>
+    <div class="field">
+      <%= form.label :Celular %>
+      <%= form.text_field :Celular %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :Instagram %>
+      <%= form.text_field :Instagram %>
+    </div>
+    
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
+  
+  
+  
   </div>
 <% end %>
+

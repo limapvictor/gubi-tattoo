@@ -1,5 +1,18 @@
+<% if logado? %>
+<h1> Sessão já iniciada pelo usuario <%= @usuario_atual.NomeDeUsuario %></h1>
+
+<%= link_to 'Logout', logout_path, method: :delete %>
+<%= link_to 'Back', usuarios_path %>
+
+
+
+<% else %>
+
+
 <h1>New Usuario</h1>
 
 <%= render 'form', usuario: @usuario %>
 
 <%= link_to 'Back', usuarios_path %>
+
+<% end %>

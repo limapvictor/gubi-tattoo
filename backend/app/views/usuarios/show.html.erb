@@ -20,6 +20,20 @@
   <%= @usuario.NomeDeUsuario %>
 </p>
 
+<p>
+  <strong>Tipo de Conta: </strong>
+  <%= @usuario.TipoDeConta %>
+</p>
+
+<% if @usuario.TipoDeConta == 'Tatuador' %>
+<p>
+  <strong>Instagram: </strong>
+  <%= @usuario.Instagram %>
+</p>
+
+
+<% end %>
+
 <% if logado? && @usuario.NomeDeUsuario == @usuario_atual.NomeDeUsuario %>
 <%= link_to 'Edit', edit_usuario_path(@usuario_atual) %>
 <% end %>
