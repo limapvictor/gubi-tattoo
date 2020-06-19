@@ -47,7 +47,7 @@
 <%= link_to 'Back', usuarios_path %>
 
 <% if logado? && @usuario.NomeDeUsuario == @usuario_atual.NomeDeUsuario && @usuario.TipoDeConta == "Tatuador" %>
-  <%= link_to 'Novo Post', new_tatuagem_path %>
+  <%= link_to 'Novo Post', new_post_path %>
 <% end %>
 
 <% if logado? %>

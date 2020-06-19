@@ -1,0 +1,19 @@
+<h1>Posts</h1>
+
+<p><b>Titulo:  </b><%=@post.titulo %></p>
+
+<p>
+  <% if @post.foto.attached? %>
+  <img src ="<%=(url_for(@post.foto))%>">
+
+  <% else %>
+  <%= "nao possui foto." %>
+
+  <% end %>
+</p>
+
+<br><br>
+
+<%= link_to 'Editar', edit_post_path(@post) %>
+<%= link_to 'Deletar', post_path(@post), method: :delete, data: {confirm: "Você tem certeza?"} %>
+<%= link_to 'Voltar', posts_path %>

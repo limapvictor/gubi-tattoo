@@ -10,7 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_162734) do
+ActiveRecord::Schema.define(version: 2020_06_16_125358) do
+
+  create_table "Tatuagems", force: :cascade do |t|
+    t.string "Titulo"
+    t.string "Link"
+    t.string "NumeroSalvos"
+    t.integer "Tatuador_id"
+    t.integer "Estudio_id"
+    t.integer "usuario_id"
+    t.index ["Estudio_id"], name: "index_tatuagems_on_Estudio_id"
+    t.index ["Tatuador_id"], name: "index_tatuagems_on_Tatuador_id"
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "caracteristicas", force: :cascade do |t|
     t.string "Descricao"
@@ -33,6 +65,12 @@ ActiveRecord::Schema.define(version: 2020_06_11_162734) do
     t.string "Senha"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "titulo"
+    t.integer "numero_salvos"
+    t.integer "usuario_it"
+  end
+
   create_table "tatuadors", force: :cascade do |t|
     t.string "Nome"
     t.string "Email"
@@ -45,16 +83,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_162734) do
     t.string "Foto"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tatuagems", force: :cascade do |t|
-    t.string "Titulo"
-    t.string "Link"
-    t.string "NumeroSalvos"
-    t.integer "Tatuador_id"
-    t.integer "Estudio_id"
-    t.index ["Estudio_id"], name: "index_tatuagems_on_Estudio_id"
-    t.index ["Tatuador_id"], name: "index_tatuagems_on_Tatuador_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -71,4 +99,5 @@ ActiveRecord::Schema.define(version: 2020_06_11_162734) do
     t.integer "NumeroDeSeguidores"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

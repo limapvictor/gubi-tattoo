@@ -1,0 +1,27 @@
+<h1> Criar um post novo: </h1>
+
+<% if @post.errors.any? %>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+       <li> <%= msg %> 
+    <% end %>
+    </ul>
+<% end %>
+
+
+
+<%= form_with scope: :post, url: posts_path, local: true do |form| %>
+
+<p>
+<%= form.label "Titulo: " %>
+<%= form.text_field :titulo %>
+</p>
+
+<div class="field">
+   <%= form.label "Foto: " %>
+   <%= form.file_field :foto %>
+</div>
+
+<%= form.submit "Salvar post" %>
+
+<% end %>
