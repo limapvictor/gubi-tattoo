@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+   <%= form.label "Foto de Perfil: " %>
+   <%= form.file_field :foto_de_perfil %>
+  </div>
+
+  <div class="field">
     <%= form.label :Nome %>
     <%= form.text_field :Nome %>
   </div>
@@ -41,6 +46,8 @@
   <%= form.select(:TipoDeConta, raw('<option value="Comum">Conta Comum</option>
                                      <option value="Tatuador">Tatuador</option>
                                     <option value="Estudio">Estudio</option>')) %>
+
+  
 
 
   <% if @usuario.TipoDeConta == "Tatuador" %>

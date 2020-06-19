@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <% if @usuario.foto_de_perfil.attached? %>
+  <img src ="<%=(url_for(@usuario.foto_de_perfil))%>">
+  <% end %>
+</p>
+
+<p>
   <strong>Nome:</strong>
   <%= @usuario.Nome %>
 </p>
@@ -37,5 +43,13 @@
 <% if logado? && @usuario.NomeDeUsuario == @usuario_atual.NomeDeUsuario %>
 <%= link_to 'Edit', edit_usuario_path(@usuario_atual) %>
 <% end %>
+
 <%= link_to 'Back', usuarios_path %>
+
+<% if logado? && @usuario.NomeDeUsuario == @usuario_atual.NomeDeUsuario && @usuario.TipoDeConta == "Tatuador" %>
+  <%= link_to 'Novo Post', new_tatuagem_path %>
+<% end %>
+
+<% if logado? %>
 <%= link_to 'Logout', logout_path, method: :delete %>
+<% end %>
