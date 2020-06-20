@@ -20,6 +20,7 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(params.require(:post).permit(:titulo, :foto))
         
+        
         if @post.save
             flash.notice = "Post salvo!"
             redirect_to post_path(@post)

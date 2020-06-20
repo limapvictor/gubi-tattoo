@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_125358) do
+ActiveRecord::Schema.define(version: 2020_06_19_211805) do
 
   create_table "Tatuagems", force: :cascade do |t|
     t.string "Titulo"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_125358) do
     t.string "titulo"
     t.integer "numero_salvos"
     t.integer "usuario_it"
+    t.integer "usuario_id"
   end
 
   create_table "tatuadors", force: :cascade do |t|

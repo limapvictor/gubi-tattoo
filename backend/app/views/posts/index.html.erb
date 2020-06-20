@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <th>Titulo: </th>
+            <th>Criador: </th>
             <th>Ações: </th>
         </tr>
     </thead>
@@ -12,6 +13,7 @@
     <% @posts.each do |post| %>
         <tr>
             <td> <%=post.titulo %> </td>
+            <td> <%=post.usuario.NomeDeUsuario %> </td>
             <td> <%= link_to 'Delete', post_path(post.id), method: :delete, data: {confirm: "Você tem certeza?"} %></td>
             <td> <%= link_to 'Ver', post_path(post.id) %></td>
             <td> <%= link_to 'Editar', edit_post_path(post.id)%></td>

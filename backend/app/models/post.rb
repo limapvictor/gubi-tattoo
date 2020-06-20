@@ -4,6 +4,6 @@ class Post < ApplicationRecord
 
     has_one_attached :foto
 
-    belongs_to :Usuario
+    belongs_to :usuario
 
 end
