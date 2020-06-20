@@ -13,7 +13,8 @@
 </p>
 
 <br><br>
-
+<% if logado? && @post.usuario == usuario_atual %>
 <%= link_to 'Editar', edit_post_path(@post) %>
 <%= link_to 'Deletar', post_path(@post), method: :delete, data: {confirm: "Você tem certeza?"} %>
+<% end %>
 <%= link_to 'Voltar', posts_path %>

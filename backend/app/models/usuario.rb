@@ -7,7 +7,8 @@ class Usuario < ApplicationRecord
     has_many :segues
     has_many :posts
 
-    REGEX_EMAIL = /\A[\W+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    REGEX_EMAIL = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
 
     validates :Nome ,presence: true
     validates :Email ,presence: true, uniqueness: {case_sensitive: false}, format: {with: REGEX_EMAIL }

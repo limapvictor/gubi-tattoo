@@ -1,28 +1,36 @@
-<h1> Editar post: </h1>
+   <% if logado? && usuario_atual.TipoDeConta == 'Tatuador' && @post.usuario == usuario_atual %>
+   
+   <h1> Editar post: </h1>
 
-<% if @post.errors.any? %>
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-       <li> <%= msg %> 
-    <% end %>
-    </ul>
-<% end %>
-
-
-
-<%= form_with(model: @post, local: true) do |form| %>
-
-<p>
-<%= form.label "Titulo: " %>
-<%= form.text_field :titulo %>
-</p>
+   <% if @post.errors.any? %>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+         <li> <%= msg %> 
+      <% end %>
+      </ul>
+   <% end %>
 
 
-<div class="field">
-   <%= form.label "Foto: " %>
-   <%= form.file_field :foto %>
-</div>
 
-<%= form.submit "Salvar post" %>
+   <%= form_with(model: @post, local: true) do |form| %>
 
-<% end %>
+   <p>
+   <%= form.label "Titulo: " %>
+   <%= form.text_field :titulo %>
+   </p>
+
+
+   <div class="field">
+      <%= form.label "Foto: " %>
+      <%= form.file_field :foto %>
+   </div>
+
+   <%= form.submit "Salvar post" %>
+
+   <% end %>
+
+<% else %>
+<h1> Seu tipo de conta não dá permissão para acessar essa página. </h1>
+
+<%= link_to 'Voltar', posts_path %>
+<%end%>

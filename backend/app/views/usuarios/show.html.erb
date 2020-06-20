@@ -40,13 +40,13 @@
 
 <% end %>
 
-<% if logado? && @usuario.NomeDeUsuario == @usuario_atual.NomeDeUsuario %>
-<%= link_to 'Edit', edit_usuario_path(@usuario_atual) %>
+<% if logado? && @usuario.NomeDeUsuario == usuario_atual.NomeDeUsuario %>
+<%= link_to 'Edit', edit_usuario_path(usuario_atual) %>
 <% end %>
 
 <%= link_to 'Back', usuarios_path %>
 
-<% if logado? && @usuario.NomeDeUsuario == @usuario_atual.NomeDeUsuario && @usuario.TipoDeConta == "Tatuador" %>
+<% if logado? && @usuario.NomeDeUsuario == usuario_atual.NomeDeUsuario && @usuario.TipoDeConta == "Tatuador" %>
   <%= link_to 'Novo Post', new_post_path %>
 <% end %>
 

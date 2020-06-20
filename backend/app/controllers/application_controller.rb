@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-        
+    
+    helper_method :usuario_atual, :logado?
     def usuario_atual
         # define quem é o usuário que está atualmente logado, seus acessos e suas permissões
         @usuario_atual ||= Usuario.find(session[:usuario_id]) if session[:usuario_id]
