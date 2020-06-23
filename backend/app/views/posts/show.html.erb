@@ -12,6 +12,27 @@
   <% end %>
 </p>
 
+<p>
+  <h4>Tags:</h4>
+  <ul>
+  <% @post.tag_list.each do |tag| %>
+    <li><%= tag %></li>
+  <% end %>
+  </ul>
+</p>
+
+<p>
+  <h4> Posts relacionados: </h4>
+    <ul>
+      <% @posts_relacionados.each do |relacionado| %>
+        <li><%= link_to relacionado.titulo, relacionado %></li>
+      <% end %>
+    </ul>
+  </h4>
+</p>
+
+
+
 <br><br>
 <% if logado? && @post.usuario == usuario_atual %>
 <%= link_to 'Editar', edit_post_path(@post) %>

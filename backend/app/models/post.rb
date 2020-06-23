@@ -6,4 +6,6 @@ class Post < ApplicationRecord
 
     belongs_to :usuario
 
+    acts_as_taggable_on :tags
+
 end

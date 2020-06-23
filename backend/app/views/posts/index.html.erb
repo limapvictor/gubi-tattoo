@@ -1,4 +1,14 @@
+
+
 <h1> Index: </h1>
+
+<h4> busca por tags: </h4>
+    <%= form_tag(busca_path, method: :get) do %>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag("Search") %>
+    <% end %>
+
+<br><br>
 
 <table>
     <thead>
@@ -22,8 +32,14 @@
         </tr>
     <% end %>    
     </tbody>
+
 </table>
+
 <br>
+
+
 <% if logado? && usuario_atual.TipoDeConta == 'Tatuador' %>
 <%= link_to 'Novo Post', new_post_path %>
 <% end %>
+
+

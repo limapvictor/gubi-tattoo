@@ -1,0 +1,10 @@
+<h1> Resultado da busca pela tag "<%= params[:search] %>" </h1>
+
+
+<% @busca.each do |post| %>
+<ul>
+    <li><%= link_to post.titulo, post_path(post) %></li>
+</ul>
+<% end %>
+
+<%= link_to 'Voltar', posts_path %>
