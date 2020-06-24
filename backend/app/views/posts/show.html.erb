@@ -12,8 +12,10 @@
   <% end %>
 </p>
 
+<p><b>Autor:  </b><%= @post.usuario.NomeDeUsuario %></p>
+
 <p>
-  <h4>Tags:</h4>
+  <b>Tags:</b>
   <ul>
   <% @post.tag_list.each do |tag| %>
     <li><%= tag %></li>

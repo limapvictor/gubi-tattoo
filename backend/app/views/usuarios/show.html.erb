@@ -53,3 +53,17 @@
 <% if logado? %>
 <%= link_to 'Logout', logout_path, method: :delete %>
 <% end %>
+
+
+<br><br>
+<% if @usuario.TipoDeConta == "Tatuador" %>
+<%= "Posts do usuario: " %>
+  <% @posts.each do |post| %>
+    <%if post.usuario.NomeDeUsuario == @usuario.NomeDeUsuario %>
+    <ul>
+      <li><%= link_to post.titulo, post_path(post) %></li>
+    </ul>
+    <% end %>
+  <% end %>
+<% end %>
+

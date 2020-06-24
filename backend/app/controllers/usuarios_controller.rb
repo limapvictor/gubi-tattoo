@@ -12,6 +12,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
+    @posts = Post.all
   end
 
   # GET /usuarios/new
