@@ -27,7 +27,12 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(params.require(:post).permit(:titulo, :foto, :usuario_id, :tag_list))
         @post.usuario = usuario_atual
+
+        @post.tag_list.each do |tag|
+            Caracteristica.create(:Descricao=> tag, :Estilo=>false)
+        end
         
+
         if @post.save
             flash.notice = "Post salvo!"
             redirect_to post_path(@post)
@@ -62,6 +67,7 @@ class PostsController < ApplicationController
     end
 
     def add
+        @usuarios = Usuario.all
     end
 
 end
