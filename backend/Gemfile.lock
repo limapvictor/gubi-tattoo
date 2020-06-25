@@ -455,11 +455,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-<<<<<<< HEAD
   acts-as-taggable-on (~> 6.5)
-=======
-  acts-as-taggable-on (~> 6.0)
->>>>>>> 9c391bb74229554de47c68868f4ccbade5472711
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
