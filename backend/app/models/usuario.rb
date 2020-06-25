@@ -5,7 +5,7 @@ class Usuario < ApplicationRecord
     has_many :acompanhas
     has_many :salvas
     has_many :segues
-    has_many :posts
+    has_many :posts, through: :segues
 
     REGEX_EMAIL = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
