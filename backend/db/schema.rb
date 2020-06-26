@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_193238) do
+ActiveRecord::Schema.define(version: 2020_06_26_001535) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_06_25_193238) do
     t.string "titulo"
     t.integer "numero_salvos"
     t.integer "usuario_id"
+  end
+
+  create_table "segues", force: :cascade do |t|
+    t.integer "usuario_id", null: false
+    t.integer "caracteristica_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["caracteristica_id"], name: "index_segues_on_caracteristica_id"
+    t.index ["usuario_id"], name: "index_segues_on_usuario_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -126,5 +135,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_193238) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "segues", "caracteristicas"
+  add_foreign_key "segues", "usuarios"
   add_foreign_key "taggings", "tags"
 end
