@@ -1,0 +1,23 @@
+%h1 Listing segues
+
+%table
+  %thead
+    %tr
+      %th Usuario
+      %th Caracteristica
+      %th
+      %th
+      %th
+
+  %tbody
+    - @segues.each do |segue|
+      %tr
+        %td= segue.usuario
+        %td= segue.caracteristica
+        %td= link_to 'Show', segue
+        %td= link_to 'Edit', edit_segue_path(segue)
+        %td= link_to 'Destroy', segue, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Segue', new_segue_path

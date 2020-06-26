@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :segue do
     usuario { nil }
-    post { nil }
+    caracteristica { nil }
   end
 end

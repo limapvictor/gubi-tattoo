@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :segues
   resources :tatuagems
   resources :usuarios
   resources :caracteristicas

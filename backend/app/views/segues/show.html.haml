@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Usuario:
+  = @segue.usuario
+%p
+  %b Caracteristica:
+  = @segue.caracteristica
+
+= link_to 'Edit', edit_segue_path(@segue)
+\|
+= link_to 'Back', segues_path
