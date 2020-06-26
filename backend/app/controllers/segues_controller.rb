@@ -31,7 +31,7 @@ class SeguesController < ApplicationController
 
     respond_to do |format|
       if @segue.save
-        format.html { redirect_to segues_url, notice: 'Segue was successfully created.' }
+        format.html { redirect_to cadastro_url, notice: 'Segue was successfully created.' }
         format.json { render :show, status: :created, location: @segue }
       else
         format.html { render :new }
