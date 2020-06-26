@@ -2,10 +2,10 @@
 
 %p
   %b Usuario:
-  = @segue.usuario
+  = @segue.usuario.Nome
 %p
   %b Caracteristica:
-  = @segue.caracteristica
+  = @segue.caracteristica.Descricao
 
 = link_to 'Edit', edit_segue_path(@segue)
 \|

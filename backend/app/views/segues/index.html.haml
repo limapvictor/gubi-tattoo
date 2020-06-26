@@ -12,8 +12,8 @@
   %tbody
     - @segues.each do |segue|
       %tr
-        %td= segue.usuario
-        %td= segue.caracteristica
+        %td= segue.usuario.Nome
+        %td= segue.caracteristica.Descricao
         %td= link_to 'Show', segue
         %td= link_to 'Edit', edit_segue_path(segue)
         %td= link_to 'Destroy', segue, method: :delete, data: { confirm: 'Are you sure?' }

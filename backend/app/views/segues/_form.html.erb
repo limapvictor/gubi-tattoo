@@ -1,0 +1,28 @@
+<%= form_with(model: @segue, local:true) do |form| %>
+  <% if @segue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(s@egue.errors.count, "error")%> prohibited this segue from being saved:</h2>
+      
+      <ul>
+        <% @segue.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <%= form.label :usuario %>
+   <%= form.text_field :usuario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caracteristica %>
+    <%= form.text_field :caracteristica %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save' %>
+  </div>
+  
+<% end %>

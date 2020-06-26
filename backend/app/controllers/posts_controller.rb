@@ -66,8 +66,4 @@ class PostsController < ApplicationController
         end
     end
 
-    def add
-        @usuarios = Usuario.all
-    end
-
 end

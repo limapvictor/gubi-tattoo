@@ -31,7 +31,7 @@ class UsuariosController < ApplicationController
     respond_to do |format|
       if @usuario.save
         session[:usuario_id] = @usuario.id
-        format.html { redirect_to cadastro_url, notice: 'Usuario was successfully created.' }
+        format.html { redirect_to segues_new_path, notice: 'Usuario was successfully created.' }
         format.json { render :show, status: :created, location: @usuario }
       else
         format.html { render :new }
