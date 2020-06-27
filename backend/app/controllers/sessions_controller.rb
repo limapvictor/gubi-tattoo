@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
 
     def new
+        if logado?
+            @acompanhados = usuario_atual.usuarios_acompanhados
+            @posts = Post.all
+            render 'usuarios/feed'
+        end
     end
 
     def create

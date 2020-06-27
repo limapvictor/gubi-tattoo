@@ -1,0 +1,13 @@
+
+<h1> Feed de <%= usuario_atual.Nome %></h1>
+<br>
+<% @acompanhados.each do |usuario| %>
+    <% @posts.each do |post| %>
+        <% if usuario.acompanhado_id == post.usuario_id %>
+            <%= link_to post.titulo, post_path(post) %>, por <%= link_to Usuario.find_by(id: post.usuario_id).NomeDeUsuario, usuario_path(Usuario.find_by(id: post.usuario_id)) %> <br>
+        <% end %>
+    <% end %>    
+<% end %>
+
+<br><br>
+<%= link_to "Voltar", posts_path %>

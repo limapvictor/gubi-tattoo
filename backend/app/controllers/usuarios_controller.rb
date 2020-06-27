@@ -76,6 +76,11 @@ class UsuariosController < ApplicationController
   end
 
 
+  def feed
+    @acompanhados = usuario_atual.usuarios_acompanhados
+    @posts = Post.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_usuario
