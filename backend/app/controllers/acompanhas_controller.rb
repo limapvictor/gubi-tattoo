@@ -1,0 +1,2 @@
+class AcompanhasController < ApplicationController
+end

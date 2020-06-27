@@ -63,6 +63,19 @@ class UsuariosController < ApplicationController
     flash.alert = "Usuario deletado com sucesso."
   end
 
+  def follow
+    @usuario = Usuario.find(params[:id])
+    usuario_atual.acompanhados << @usuario
+    redirect_to usuario_path(@usuario)
+  end
+
+  def unfollow
+    @usuario = Usuario.find(params[:id])
+    usuario_atual.usuarios_acompanhados.find_by(acompanhado_id: @usuario.id).destroy
+    redirect_to usuario_path(@usuario)
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_usuario

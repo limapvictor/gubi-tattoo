@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :acompanhas
   resources :segues
   resources :tatuagems
   resources :usuarios
@@ -12,7 +13,8 @@ Rails.application.routes.draw do
 
   get 'busca', to: 'posts#busca'
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  post 'usuarios/:id/follow', to: 'usuarios#follow', as: "follow_usuario"
+  post 'usuarios/:id/unfollow', to: 'usuarios#unfollow', as: "unfollow_usuario"
   root 'sessions#new'
 
   resources :posts

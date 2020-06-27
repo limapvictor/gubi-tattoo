@@ -7,6 +7,15 @@ class Usuario < ApplicationRecord
     has_many :segues
     has_many :posts, through: :segues
 
+    # um usuario pode acompanhar varios usuarios
+    has_many :usuarios_acompanhados, foreign_key: :acompanha_id, class_name: "Acompanha"
+    has_many :acompanhados, through: :usuarios_acompanhados
+
+    # um usuario pode ser acompanhado por varios usuarios
+    has_many :usuarios_que_acompanham, foreign_key: :acompanhado_id, class_name: "Acompanha"
+    has_many :acompanhas, through: :usuarios_que_acompanham
+
+
     REGEX_EMAIL = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
 
