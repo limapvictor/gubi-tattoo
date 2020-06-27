@@ -40,20 +40,13 @@
 
 <% end %>
 
-<% if logado? && @usuario.NomeDeUsuario == usuario_atual.NomeDeUsuario %>
-<%= link_to 'Edit', edit_usuario_path(usuario_atual) %>
+<% if logado? && @usuario.NomeDeUsuario != usuario_atual.NomeDeUsuario %>
+  <% if usuario_atual.acompanhados.include?(@usuario)%>
+    <%= button_to "Unfollow", unfollow_usuario_path, method: "POST" %>
+  <% else %>
+    <%= button_to "Follow", follow_usuario_path, method: "POST"  %>
+  <% end %>
 <% end %>
-
-<%= link_to 'Back', usuarios_path %>
-
-<% if logado? && @usuario.NomeDeUsuario == usuario_atual.NomeDeUsuario && @usuario.TipoDeConta == "Tatuador" %>
-  <%= link_to 'Novo Post', new_post_path %>
-<% end %>
-
-<% if logado? %>
-<%= link_to 'Logout', logout_path, method: :delete %>
-<% end %>
-
 
 <br><br>
 <% if @usuario.TipoDeConta == "Tatuador" %>
@@ -67,3 +60,20 @@
   <% end %>
 <% end %>
 
+
+
+<br>
+
+<% if logado? && @usuario.NomeDeUsuario == usuario_atual.NomeDeUsuario %>
+<%= link_to 'Edit', edit_usuario_path(usuario_atual) %>
+<% end %>
+
+<% if logado? && @usuario.NomeDeUsuario == usuario_atual.NomeDeUsuario && @usuario.TipoDeConta == "Tatuador" %>
+  <%= link_to 'Novo Post', new_post_path %>
+<% end %>
+
+<% if logado? %>
+<%= link_to 'Logout', logout_path, method: :delete %>
+<% end %>
+
+<%= link_to 'Back', usuarios_path %>

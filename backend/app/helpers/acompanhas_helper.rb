@@ -1,0 +1,2 @@
+module AcompanhasHelper
+end

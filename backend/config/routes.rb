@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  resources :segues
-  resources :tatuagems
-  resources :usuarios
-  resources :caracteristicas
-  resources :estudios
-  resources :tatuadors
+  resources :acompanhas, :segues, :usuarios, :posts
 
+  root 'sessions#new'
+ 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
@@ -14,8 +11,10 @@ Rails.application.routes.draw do
 
   get 'busca', to: 'posts#busca'
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'sessions#new'
+  post 'usuarios/:id/follow', to: 'usuarios#follow', as: "follow_usuario"
+  post 'usuarios/:id/unfollow', to: 'usuarios#unfollow', as: "unfollow_usuario"
+  
+  get 'feed', to: 'usuarios#feed'
 
   resources :posts
 
