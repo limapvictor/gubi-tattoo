@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  get 'cadastro', to: 'segues#new'
+
   get 'busca', to: 'posts#busca'
 
   post 'usuarios/:id/follow', to: 'usuarios#follow', as: "follow_usuario"
