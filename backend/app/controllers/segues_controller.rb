@@ -27,11 +27,17 @@ class SeguesController < ApplicationController
   # POST /segues.json
   def create
     @caracteristicas = Caracteristica.all
-    @segue = Segue.new(segue_params)
-
-    respond_to do |format|
+    @not_error = 1
+    segue_params.each do |tag|
+      @segue = Segue.new({:usuario_id => usuario_atual.id, :caracteristica_id => tag})
       if @segue.save
-        format.html { redirect_to cadastro_url, notice: 'Segue was successfully created.' }
+      else
+        @not_error = 0
+      end
+    end
+    respond_to do |format|
+      if @not_error
+        format.html { redirect_to feed_url, notice: 'Segue was successfully created.' }
         format.json { render :show, status: :created, location: @segue }
       else
         format.html { render :new }
@@ -72,6 +78,6 @@ class SeguesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def segue_params
-      params.require(:segues).permit(:usuario_id, :caracteristica_id)
+      tags = params.require(:tags)
     end
 end

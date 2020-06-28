@@ -1,7 +1,13 @@
 <h1> New segue </h1>
 
-<% @caracteristicas.each do |tag| %>
-    <%= button_to tag.Descricao, {:controller => 'segues', :action => 'create', :segues => {:usuario_id => usuario_atual.id, :caracteristica_id => tag.id}}, :method =>:post %>
-<% end %>
+<%
+=begin%>
+ <% @caracteristicas.each do |tag| %>
+    <%= button_to tag.Descricao, {:controller => 'segues', :action => 'create', :segue => {:usuario_id => usuario_atual.id, :caracteristica_id => tag.id}}, :method =>:post %>
+<% end %> 
+<%
+=end%>
+
+<%= render 'form' %>
 
 <%= link_to 'Back', segues_path%>

@@ -1,7 +1,7 @@
 <%= form_with(model: @segue, local:true) do |form| %>
   <% if @segue.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(s@egue.errors.count, "error")%> prohibited this segue from being saved:</h2>
+      <h2><%= pluralize(@segue.errors.count, "error")%> prohibited this segue from being saved:</h2>
       
       <ul>
         <% @segue.errors.full_messages.each do |message| %>
@@ -11,15 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <%
+=begin%>
+ <div class="field">
   <%= form.label :usuario %>
-   <%= form.text_field :usuario %>
+   <%= form.text_field :usuario_id %>
   </div>
 
   <div class="field">
     <%= form.label :caracteristica %>
-    <%= form.text_field :caracteristica %>
+    <%= form.text_field :caracteristica_id %>
   </div>
+
+  <div class="field">
+    <%= check_box_tag(:caracteristica_id, '42')%>
+    <%= label_tag(:caracteristica_id, 'Quero essa tag')%>
+  </div> 
+<%
+=end%>
+
+  <ul>
+    <% @caracteristicas.each do |tag| %>
+        <li>
+          <%= check_box_tag 'tags[]', tag.id -%>
+          <%= h tag.Descricao -%>
+        </li>
+    <% end %>
+  </ul>
 
   <div class="actions">
     <%= form.submit 'Save' %>
