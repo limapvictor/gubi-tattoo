@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :acompanhas, :segues, :usuarios, :posts
+  resources :acompanhas, :segues, :usuarios, :posts, :caracteristicas
 
   root 'sessions#new'
  

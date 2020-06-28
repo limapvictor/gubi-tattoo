@@ -61,13 +61,6 @@ ActiveRecord::Schema.define(version: 2020_06_26_213811) do
     t.string "Senha"
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.integer "seguidor_id"
-    t.integer "eh_seguido_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "titulo"
     t.integer "numero_salvos"

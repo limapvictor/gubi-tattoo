@@ -6,6 +6,6 @@ class Caracteristica < ApplicationRecord
     has_many :segues
     has_many :especializado_ems
 
-    validates :Descricao ,presence: true
+    validates :Descricao ,presence: true, uniqueness: true
 end
 
