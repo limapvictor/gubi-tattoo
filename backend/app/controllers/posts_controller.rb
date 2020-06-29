@@ -25,13 +25,8 @@ class PostsController < ApplicationController
     end
     
     def create
-        @post = Post.new(params.require(:post).permit(:titulo, :foto, :usuario_id, :tag_list))
-        @post.usuario = usuario_atual
-
-        @post.tag_list.each do |tag|
-            Caracteristica.create(:Descricao=> tag, :Estilo=>false)
-        end
-        
+        @post = Post.new(tag_params)
+        @post.usuario = usuario_atual    
 
         if @post.save
             flash.notice = "Post salvo!"
@@ -65,5 +60,22 @@ class PostsController < ApplicationController
             @posts = Post.all
         end
     end
+
+    def tag_params
+        p = params.require(:post).permit(:titulo, :foto, :estilo, :tag_list)
+
+        p[:tag_list].split(',') do |tag|
+            Caracteristica.create(:Descricao=> tag, :Estilo=>false)
+        end
+
+        p[:estilo].split(',') do |tag|
+            Caracteristica.create(:Descricao=> tag, :Estilo=>true)
+        end
+
+        p[:tag_list] = p[:tag_list] + ',' + p[:estilo]
+
+        p.permit(:titulo, :foto, :tag_list)
+    end
+
 
 end
