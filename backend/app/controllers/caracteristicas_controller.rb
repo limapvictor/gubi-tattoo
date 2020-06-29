@@ -5,20 +5,24 @@ class CaracteristicasController < ApplicationController
   # GET /caracteristicas.json
   def index
     @caracteristicas = Caracteristica.all
+    redirect_to root_path
   end
 
   # GET /caracteristicas/1
   # GET /caracteristicas/1.json
   def show
+    redirect_to root_path
   end
 
   # GET /caracteristicas/new
   def new
     @caracteristica = Caracteristica.new
+    redirect_to root_path
   end
 
   # GET /caracteristicas/1/edit
   def edit
+    redirect_to root_path
   end
 
   # POST /caracteristicas
@@ -54,6 +58,7 @@ class CaracteristicasController < ApplicationController
   # DELETE /caracteristicas/1
   # DELETE /caracteristicas/1.json
   def destroy
+    redirect_to root_path
     @caracteristica.destroy
     respond_to do |format|
       format.html { redirect_to caracteristicas_url, notice: 'Caracteristica was successfully destroyed.' }

@@ -5,13 +5,13 @@ class SeguesController < ApplicationController
   # GET /segues.json
   def index
     @segues = Segue.all
-    redirect_to feed_path
+    redirect_to root_path
   end
 
   # GET /segues/1
   # GET /segues/1.json
   def show
-    redirect_to feed_path
+    redirect_to root_path
   end
 
   # GET /segues/new
@@ -23,11 +23,6 @@ class SeguesController < ApplicationController
 
   # GET /segues/1/edit
   def edit
-<<<<<<< HEAD
-=======
-    @segue = Segue.new
-    @usuario = usuario_atual
->>>>>>> urls sem acesso redirecionam ao feed
     @caracteristicas = Caracteristica.all
   end
 
