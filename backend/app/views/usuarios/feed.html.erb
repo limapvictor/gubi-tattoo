@@ -2,14 +2,36 @@
 
 <h1> Feed de <%= usuario_atual.Nome %></h1>
 <br>
+
+<% feed_content = [] %>
+
 <% @acompanhados.each do |usuario| %>
     <% @posts.each do |post| %>
         <% if usuario.acompanhado_id == post.usuario_id %>
-            <%= link_to post.titulo, post_path(post) %>, por <%= link_to Usuario.find_by(id: post.usuario_id).NomeDeUsuario, usuario_path(Usuario.find_by(id: post.usuario_id)) %> <br>
+            <% feed_content.push post %>
         <% end %>
     <% end %>    
+<% end %>
+
+<% @tags_seguidas.each do |tag| %>
+    <% @caracteristicas.each do |car| %>
+        <% if tag.caracteristica_id == car.id %>
+            <% @posts.each do |post| %>
+                <% if post.tag_list.include? car.Descricao %>
+                    <% if !feed_content.include? post %>
+                        <% feed_content.push post %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %>
 <% end %>
 
 <br><br>
 <%= link_to 'Logout', logout_path%>
 <%= link_to "Voltar", posts_path %>
+
+<% feed_content. each do |post| %>
+<% link_to post.titulo, post_path(post) %>, por <%= link_to Usuario.find_by(id: post.usuario_id).NomeDeUsuario, usuario_path(Usuario.find_by(id: post.usuario_id)) %> <br>
+<%= post.titulo %>, postado às <%= post.created_at %>
+<% end %>

@@ -31,7 +31,6 @@ class UsuariosController < ApplicationController
   # POST /usuarios
   # POST /usuarios.json
   def create
-<<<<<<< HEAD
     @usuario = Usuario.new(usuario_params)
     respond_to do |format|
       if @usuario.save
@@ -43,19 +42,6 @@ class UsuariosController < ApplicationController
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
       end
     end
-=======
-        @usuario = Usuario.new(usuario_params)
-        respond_to do |format|
-          if @usuario.save
-            session[:usuario_id] = @usuario.id
-            format.html { redirect_to cadastro_url, notice: 'Usuario was successfully created.' }
-            format.json { render :show, status: :created, location: @usuario }
-          else
-            format.html { render :new }
-            format.json { render json: @usuario.errors, status: :unprocessable_entity }
-          end
-        end
->>>>>>> urls sem acesso redirecionam ao feed
   end
 
   # PATCH/PUT /usuarios/1
@@ -102,6 +88,14 @@ class UsuariosController < ApplicationController
   def feed
     @acompanhados = usuario_atual.usuarios_acompanhados
     @posts = Post.all
+    @tags_seguidas = usuario_atual.segues
+    @segues = Segue.all
+    @caracteristicas = Caracteristica.all
+
+  end
+
+  def feed_content
+    
   end
 
   private
