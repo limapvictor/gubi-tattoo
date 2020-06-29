@@ -5,13 +5,13 @@ class SeguesController < ApplicationController
   # GET /segues.json
   def index
     @segues = Segue.all
-    redirect_to feed_path
+    redirect_to root_path
   end
   
   # GET /segues/1
   # GET /segues/1.json
   def show
-    redirect_to feed_path
+    redirect_to root_path
   end
 
   # GET /segues/new
