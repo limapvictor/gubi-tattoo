@@ -17,7 +17,11 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/new
   def new
-    @usuario = Usuario.new
+    if !logado?
+      @usuario = Usuario.new
+    else
+      redirect_to feed_path
+    end
   end
 
   # GET /usuarios/1/edit
@@ -27,6 +31,7 @@ class UsuariosController < ApplicationController
   # POST /usuarios
   # POST /usuarios.json
   def create
+<<<<<<< HEAD
     @usuario = Usuario.new(usuario_params)
     respond_to do |format|
       if @usuario.save
@@ -38,6 +43,19 @@ class UsuariosController < ApplicationController
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
       end
     end
+=======
+        @usuario = Usuario.new(usuario_params)
+        respond_to do |format|
+          if @usuario.save
+            session[:usuario_id] = @usuario.id
+            format.html { redirect_to cadastro_url, notice: 'Usuario was successfully created.' }
+            format.json { render :show, status: :created, location: @usuario }
+          else
+            format.html { render :new }
+            format.json { render json: @usuario.errors, status: :unprocessable_entity }
+          end
+        end
+>>>>>>> urls sem acesso redirecionam ao feed
   end
 
   # PATCH/PUT /usuarios/1
@@ -57,10 +75,15 @@ class UsuariosController < ApplicationController
   # DELETE /usuarios/1
   # DELETE /usuarios/1.json
   def destroy
-    @usuario.destroy
-    session[:usuario_id] = nil
-    redirect_to root_path
-    flash.alert = "Usuario deletado com sucesso."
+    if usuario_atual != @usuario
+      @usuario.destroy
+      session[:usuario_id] = nil
+      redirect_to root_path
+      flash.alert = "Usuario deletado com sucesso."
+    
+    else
+      redirect_to feed_path  
+    end
   end
 
   def follow

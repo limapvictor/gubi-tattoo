@@ -17,42 +17,58 @@ class PostsController < ApplicationController
     end
 
     def new
-        @post = Post.new
+        if usuario_atual.TipoDeConta == "Tatuador"
+            @post = Post.new
+        
+        else
+            redirect_to feed_path
+        end
     end
 
     def edit
         @post = Post.find(params[:id])
+        if @post.usuario_id != usuario_atual.id
+            redirect_to feed_path
+        end
     end
     
     def create
-        @post = Post.new(tag_params)
-        @post.usuario = usuario_atual    
+        if usuario_atual.TipoDeConta == "Tatuador"
+            @post = Post.new(tag_params)
+            @post.usuario = usuario_atual    
 
-        if @post.save
-            flash.notice = "Post salvo!"
-            redirect_to post_path(@post)
+            if @post.save
+                flash.notice = "Post salvo!"
+                redirect_to post_path(@post)
+            else
+                render 'new'
+            end
+        
         else
-            render 'new'
+            redirect_to feed_path    
         end
-    end
+        end
 
-    def update
-        @post = Post.find(params[:id])
-        if @post.update(params.require(:post).permit(:titulo, :foto, :usuario_id, :tag_list))
-            flash.notice = "Post atualizado!"
-            redirect_to post_path(@post)
-            
-        else 
-            render 'edit' 
-        end
+        def update
+            @post = Post.find(params[:id])
+            if @post.update(params.require(:post).permit(:titulo, :foto, :usuario_id, :tag_list))
+                flash.notice = "Post atualizado!"
+                redirect_to post_path(@post)
+                
+            else 
+                render 'edit' 
+            end
     end
 
     def destroy
         @post = Post.find(params[:id])
-        @post.destroy
-        redirect_to posts_path
+        if @post.usuario_id == usuario_atual.id
+            @post.destroy
+            redirect_to posts_path
+        else
+            redirect_to feed_path
+        end
     end
-
     def tagged
         if params[:tag].present?
             @posts = Post.tagged_with(params[:tag])
