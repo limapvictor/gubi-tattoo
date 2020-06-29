@@ -11,27 +11,17 @@
     </div>
   <% end %>
 
-  <%
-=begin%>
- <div class="field">
-  <%= form.label :usuario %>
-   <%= form.text_field :usuario_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :caracteristica %>
-    <%= form.text_field :caracteristica_id %>
-  </div>
-
-  <div class="field">
-    <%= check_box_tag(:caracteristica_id, '42')%>
-    <%= label_tag(:caracteristica_id, 'Quero essa tag')%>
-  </div> 
-<%
-=end%>
+  <ul>
+    <% @caracteristicas.where(Estilo: true).each do |tag| %>
+        <li>
+          <%= check_box_tag 'tags[]', tag.id -%>
+          <%= h tag.Descricao -%>
+        </li>
+    <% end %>
+  </ul>
 
   <ul>
-    <% @caracteristicas.each do |tag| %>
+    <% @caracteristicas.where(Estilo: false).each do |tag| %>
         <li>
           <%= check_box_tag 'tags[]', tag.id -%>
           <%= h tag.Descricao -%>
