@@ -5,7 +5,14 @@ class CreateUsuarios < ActiveRecord::Migration[6.0]
       t.string :Email, unique: true
       t.string :CPF, unique: true
       t.string :NomeDeUsuario, unique: true
-      t.string :Senha
+      t.string :password_digest
+      t.string :TipoDeConta
+      t.string :Foto
+      t.text   :Sobre
+      t.string :Celular, unique: true
+      t.string :Instagram, unique: true
+      t.integer :NumeroDeSeguidores
+
 
     end
   end

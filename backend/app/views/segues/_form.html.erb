@@ -12,16 +12,7 @@
   <% end %>
 
   <ul>
-    <% @caracteristicas.where(Estilo: true).each do |tag| %>
-        <li>
-          <%= check_box_tag 'tags[]', tag.id -%>
-          <%= h tag.Descricao -%>
-        </li>
-    <% end %>
-  </ul>
-
-  <ul>
-    <% @caracteristicas.where(Estilo: false).each do |tag| %>
+    <% @caracteristicas.each do |tag| %>
         <li>
           <%= check_box_tag 'tags[]', tag.id -%>
           <%= h tag.Descricao -%>

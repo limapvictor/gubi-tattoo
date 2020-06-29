@@ -31,7 +31,7 @@ class UsuariosController < ApplicationController
     respond_to do |format|
       if @usuario.save
         session[:usuario_id] = @usuario.id
-        format.html { redirect_to cadastro_url, notice: 'Usuario was successfully created.' }
+        format.html { redirect_to cadastro_url, notice: 'Seu perfil foi criado!' }
         format.json { render :show, status: :created, location: @usuario }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class UsuariosController < ApplicationController
   def update
     respond_to do |format|
       if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully updated.' }
+        format.html { redirect_to @usuario, notice: 'Seu perfil foi atualizado.' }
         format.json { render :show, status: :ok, location: @usuario }
       else
         format.html { render :edit }

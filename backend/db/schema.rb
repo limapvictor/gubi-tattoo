@@ -45,22 +45,6 @@ ActiveRecord::Schema.define(version: 2020_06_26_213811) do
     t.boolean "Estilo"
   end
 
-  create_table "estudios", force: :cascade do |t|
-    t.string "Nome"
-    t.string "Email"
-    t.string "CNPJ"
-    t.string "Instagram"
-    t.string "Facebook"
-    t.string "CEP"
-    t.string "Estado"
-    t.string "Cidade"
-    t.string "Bairro"
-    t.string "Rua"
-    t.string "Numero"
-    t.string "Complemento"
-    t.string "Senha"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "titulo"
     t.integer "numero_salvos"
@@ -101,30 +85,6 @@ ActiveRecord::Schema.define(version: 2020_06_26_213811) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
-  end
-
-  create_table "tatuadors", force: :cascade do |t|
-    t.string "Nome"
-    t.string "Email"
-    t.string "CPF"
-    t.integer "NumeroDeSeguidores"
-    t.string "Instagram"
-    t.string "Celular"
-    t.string "Senha"
-    t.text "Sobre"
-    t.string "Foto"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tatuagems", force: :cascade do |t|
-    t.string "Titulo"
-    t.string "Link"
-    t.string "NumeroSalvos"
-    t.integer "Tatuador_id"
-    t.integer "Estudio_id"
-    t.index ["Estudio_id"], name: "index_tatuagems_on_Estudio_id"
-    t.index ["Tatuador_id"], name: "index_tatuagems_on_Tatuador_id"
   end
 
   create_table "usuarios", force: :cascade do |t|

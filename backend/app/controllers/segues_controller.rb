@@ -21,6 +21,7 @@ class SeguesController < ApplicationController
 
   # GET /segues/1/edit
   def edit
+    @caracteristicas = Caracteristica.all
   end
 
   # POST /segues
@@ -28,8 +29,9 @@ class SeguesController < ApplicationController
   def create
     @caracteristicas = Caracteristica.all
     @not_error = 1
+    @usuario_atual = usuario_atual()
     segue_params.each do |tag|
-      @segue = Segue.new({:usuario_id => usuario_atual.id, :caracteristica_id => tag})
+      @segue = Segue.new({:usuario_id => @usuario_atual.id, :caracteristica_id => tag})
       if @segue.save
       else
         @not_error = 0
@@ -37,7 +39,7 @@ class SeguesController < ApplicationController
     end
     respond_to do |format|
       if @not_error
-        format.html { redirect_to feed_url, notice: 'Segue was successfully created.' }
+        format.html { redirect_to feed_url, notice: 'Suas tags foram adicionadas!' }
         format.json { render :show, status: :created, location: @segue }
       else
         format.html { render :new }
@@ -49,12 +51,21 @@ class SeguesController < ApplicationController
   # PATCH/PUT /segues/1
   # PATCH/PUT /segues/1.json
   def update
-    respond_to do |format|
-      if @segue.update(segue_params)
-        format.html { redirect_to @segue, notice: 'Segue was successfully updated.' }
-        format.json { render :show, status: :ok, location: @segue }
+    @caracteristicas = Caracteristica.all
+    @not_error = 1
+    @usuario_atual = usuario_atual()
+    segue_params.each do |tag|
+      if @segue.update({:usuario_id => @usuario_atual.id, :caracteristica_id => tag})
       else
-        format.html { render :edit }
+        @not_error = 0
+      end
+    end
+    respond_to do |format|
+      if @not_error
+        format.html { redirect_to feed_url, notice: 'Suas tags foram adicionadas!' }
+        format.json { render :show, status: :created, location: @segue }
+      else
+        format.html { render :new }
         format.json { render json: @segue.errors, status: :unprocessable_entity }
       end
     end
