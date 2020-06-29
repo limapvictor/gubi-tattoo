@@ -12,8 +12,6 @@ class CreateUsuarios < ActiveRecord::Migration[6.0]
       t.string :Celular, unique: true
       t.string :Instagram, unique: true
       t.integer :NumeroDeSeguidores
-
-
     end
   end
 end

@@ -27,11 +27,9 @@
     <% end %>
 <% end %>
 
+<% feed_content. each do |post| %>
+<%= link_to post.titulo, post_path(post) %>, por <%= link_to Usuario.find_by(id: post.usuario_id).NomeDeUsuario, usuario_path(Usuario.find_by(id: post.usuario_id)) %> <br>
+<% end %>
+
 <br><br>
 <%= link_to 'Logout', logout_path%>
-<%= link_to "Voltar", posts_path %>
-
-<% feed_content. each do |post| %>
-<% link_to post.titulo, post_path(post) %>, por <%= link_to Usuario.find_by(id: post.usuario_id).NomeDeUsuario, usuario_path(Usuario.find_by(id: post.usuario_id)) %> <br>
-<%= post.titulo %>, postado às <%= post.created_at %>
-<% end %>
