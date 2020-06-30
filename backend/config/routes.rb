@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   get 'cadastro', to: 'segues#new'
 
-  get 'busca', to: 'posts#busca'
+  get 'resultado', to: 'posts#busca'
+  get 'busca', to: 'posts#index'
 
   post 'usuarios/:id/follow', to: 'usuarios#follow', as: "follow_usuario"
   post 'usuarios/:id/unfollow', to: 'usuarios#unfollow', as: "unfollow_usuario"
