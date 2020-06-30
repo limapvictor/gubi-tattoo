@@ -27,10 +27,29 @@
     <% end %>
 <% end %>
 
-<br><br>
-<%= link_to 'Logout', logout_path%>
-<%= link_to "Voltar", posts_path %>
+<% feed_content.each do |post| %>
+    <% (feed_content.length).times do |j| %>
+        <% while j > 0 %>
+            <% if feed_content[j-1].created_at > feed_content[j].created_at %>
+                <% feed_content[j], feed_content[j-1] = feed_content[j-1], feed_content[j] %>
+            <% else %>
+                <% break %>
+            <% end %>
+            <% j -= 1 %>
+        <% end %>
+    <% end %>
+<% end %>
+
 
 <% feed_content. each do |post| %>
 <%= link_to post.titulo, post_path(post) %>, por <%= link_to Usuario.find_by(id: post.usuario_id).NomeDeUsuario, usuario_path(Usuario.find_by(id: post.usuario_id)) %> <br>
 <% end %>
+
+<br><br>
+<%= link_to 'Logout', logout_path%>
+<%= link_to "Voltar", posts_path %>
+
+
+
+
+
