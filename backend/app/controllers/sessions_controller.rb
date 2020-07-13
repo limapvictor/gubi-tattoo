@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
         if logado?
             @acompanhados = usuario_atual.usuarios_acompanhados
             @posts = Post.all
+            @segues = Segue.all
+            @tags_seguidas = usuario_atual.segues
+            @caracteristicas = Caracteristica.all
             render 'usuarios/feed'
         end
     end

@@ -17,47 +17,58 @@ class PostsController < ApplicationController
     end
 
     def new
-        @post = Post.new
+        if usuario_atual.TipoDeConta == "Tatuador"
+            @post = Post.new
+        
+        else
+            redirect_to feed_path
+        end
     end
 
     def edit
         @post = Post.find(params[:id])
+        if @post.usuario_id != usuario_atual.id
+            redirect_to feed_path
+        end
     end
     
     def create
-        @post = Post.new(params.require(:post).permit(:titulo, :foto, :usuario_id, :tag_list))
-        @post.usuario = usuario_atual
+        if usuario_atual.TipoDeConta == "Tatuador"
+            @post = Post.new(tag_params)
+            @post.usuario = usuario_atual    
 
-        @post.tag_list.each do |tag|
-            Caracteristica.create(:Descricao=> tag, :Estilo=>false)
-        end
+            if @post.save
+                flash.notice = "Post salvo!"
+                redirect_to post_path(@post)
+            else
+                render 'new'
+            end
         
-
-        if @post.save
-            flash.notice = "Post salvo!"
-            redirect_to post_path(@post)
         else
-            render 'new'
+            redirect_to feed_path    
         end
-    end
+        end
 
-    def update
-        @post = Post.find(params[:id])
-        if @post.update(params.require(:post).permit(:titulo, :foto, :usuario_id, :tag_list))
-            flash.notice = "Post atualizado!"
-            redirect_to post_path(@post)
-            
-        else 
-            render 'edit' 
-        end
+        def update
+            @post = Post.find(params[:id])
+            if @post.update(params.require(:post).permit(:titulo, :foto, :usuario_id, :tag_list))
+                flash.notice = "Post atualizado!"
+                redirect_to post_path(@post)
+                
+            else 
+                render 'edit' 
+            end
     end
 
     def destroy
         @post = Post.find(params[:id])
-        @post.destroy
-        redirect_to posts_path
+        if @post.usuario_id == usuario_atual.id
+            @post.destroy
+            redirect_to posts_path
+        else
+            redirect_to feed_path
+        end
     end
-
     def tagged
         if params[:tag].present?
             @posts = Post.tagged_with(params[:tag])
@@ -65,5 +76,22 @@ class PostsController < ApplicationController
             @posts = Post.all
         end
     end
+
+    def tag_params
+        p = params.require(:post).permit(:titulo, :foto, :estilo, :tag_list)
+
+        p[:tag_list].split(',') do |tag|
+            Caracteristica.create(:Descricao=> tag, :Estilo=>false)
+        end
+
+        p[:estilo].split(',') do |tag|
+            Caracteristica.create(:Descricao=> tag, :Estilo=>true)
+        end
+
+        p[:tag_list] = p[:tag_list] + ',' + p[:estilo]
+
+        p.permit(:titulo, :foto, :tag_list)
+    end
+
 
 end

@@ -5,11 +5,13 @@ class SeguesController < ApplicationController
   # GET /segues.json
   def index
     @segues = Segue.all
+    redirect_to root_path
   end
-
+  
   # GET /segues/1
   # GET /segues/1.json
   def show
+    redirect_to root_path
   end
 
   # GET /segues/new
@@ -21,17 +23,25 @@ class SeguesController < ApplicationController
 
   # GET /segues/1/edit
   def edit
+    @caracteristicas = Caracteristica.all
   end
 
   # POST /segues
   # POST /segues.json
   def create
     @caracteristicas = Caracteristica.all
-    @segue = Segue.new(segue_params)
-
-    respond_to do |format|
+    @not_error = 1
+    @usuario_atual = usuario_atual()
+    segue_params.each do |tag|
+      @segue = Segue.new({:usuario_id => @usuario_atual.id, :caracteristica_id => tag})
       if @segue.save
-        format.html { redirect_to cadastro_url, notice: 'Segue was successfully created.' }
+      else
+        @not_error = 0
+      end
+    end
+    respond_to do |format|
+      if @not_error
+        format.html { redirect_to feed_url, notice: 'Suas tags foram adicionadas!' }
         format.json { render :show, status: :created, location: @segue }
       else
         format.html { render :new }
@@ -43,12 +53,21 @@ class SeguesController < ApplicationController
   # PATCH/PUT /segues/1
   # PATCH/PUT /segues/1.json
   def update
-    respond_to do |format|
-      if @segue.update(segue_params)
-        format.html { redirect_to @segue, notice: 'Segue was successfully updated.' }
-        format.json { render :show, status: :ok, location: @segue }
+    @caracteristicas = Caracteristica.all
+    @not_error = 1
+    @usuario_atual = usuario_atual()
+    segue_params.each do |tag|
+      if @segue.update({:usuario_id => @usuario_atual.id, :caracteristica_id => tag})
       else
-        format.html { render :edit }
+        @not_error = 0
+      end
+    end
+    respond_to do |format|
+      if @not_error
+        format.html { redirect_to feed_url, notice: 'Suas tags foram adicionadas!' }
+        format.json { render :show, status: :created, location: @segue }
+      else
+        format.html { render :new }
         format.json { render json: @segue.errors, status: :unprocessable_entity }
       end
     end
@@ -72,6 +91,6 @@ class SeguesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def segue_params
-      params.require(:segues).permit(:usuario_id, :caracteristica_id)
+      tags = params.require(:tags)
     end
 end

@@ -1,13 +1,55 @@
+<p id="notice"><%= notice %></p>
 
 <h1> Feed de <%= usuario_atual.Nome %></h1>
 <br>
+
+<% feed_content = [] %>
+
 <% @acompanhados.each do |usuario| %>
     <% @posts.each do |post| %>
         <% if usuario.acompanhado_id == post.usuario_id %>
-            <%= link_to post.titulo, post_path(post) %>, por <%= link_to Usuario.find_by(id: post.usuario_id).NomeDeUsuario, usuario_path(Usuario.find_by(id: post.usuario_id)) %> <br>
+            <% feed_content.push post %>
         <% end %>
     <% end %>    
 <% end %>
 
+<% @tags_seguidas.each do |tag| %>
+    <% @caracteristicas.each do |car| %>
+        <% if tag.caracteristica_id == car.id %>
+            <% @posts.each do |post| %>
+                <% if post.tag_list.include? car.Descricao %>
+                    <% if !feed_content.include? post %>
+                        <% feed_content.push post %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>
+
+<% feed_content.each do |post| %>
+    <% (feed_content.length).times do |j| %>
+        <% while j > 0 %>
+            <% if feed_content[j-1].created_at > feed_content[j].created_at %>
+                <% feed_content[j], feed_content[j-1] = feed_content[j-1], feed_content[j] %>
+            <% else %>
+                <% break %>
+            <% end %>
+            <% j -= 1 %>
+        <% end %>
+    <% end %>
+<% end %>
+
+
+<% feed_content. each do |post| %>
+<%= link_to post.titulo, post_path(post) %>, por <%= link_to Usuario.find_by(id: post.usuario_id).NomeDeUsuario, usuario_path(Usuario.find_by(id: post.usuario_id)) %> <br>
+<% end %>
+
 <br><br>
+<%= link_to 'Logout', logout_path%>
 <%= link_to "Voltar", posts_path %>
+
+
+
+
+
