@@ -1,5 +1,5 @@
 <template>
-  <header class="flex flex-row items-center justify-between flex-wrap">
+  <header class="header flex flex-row items-center justify-between flex-wrap">
     <div id="top-line" class="w-full h-2 bg-yellow-600"></div>
     <a class="ml-6">
       <h2>Teste esq</h2>
@@ -32,7 +32,11 @@ export default {
 </script>
 
 <style>
-.bgp {
-  background: rgba(39, 39, 39, 0.45);
-}
+  .header {
+    grid-area: header;
+  }
+
+  .bgp {
+    background: rgba(39, 39, 39, 0.45);
+  }
 </style>

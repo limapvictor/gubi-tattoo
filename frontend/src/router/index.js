@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 
-import TattooistById from '../components/tattooist/TattooistById.vue';
+import TattooistById from '../views/tattooist/TattooistById.vue';
 
 Vue.use(VueRouter);
 

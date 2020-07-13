@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content pt-1 pb-4">
     <router-view></router-view>
   </div>
 </template>
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style>
-
+  .content {
+    grid-area: content;
+  }
 </style>
