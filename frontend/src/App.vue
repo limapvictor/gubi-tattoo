@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="m-0 min-h-full bg-black text-white grid-template-rows">
+  <div id="app" class="m-0 min-h-screen bg-black text-white grid">
     <Header />
     <Content />
     <Footer />
@@ -18,5 +18,8 @@ export default {
 </script>
 
 <style>
-
+#app {
+  grid-template-areas: 'header' 'content' 'footer';
+  grid-template-rows:12vh 1fr 5vh;
+}
 </style>
