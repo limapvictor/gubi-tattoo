@@ -284,7 +284,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
@@ -293,7 +295,7 @@ GEM
     multi_json (1.14.1)
     multi_test (0.1.2)
     netrc (0.11.0)
-    nio4r (2.5.2)
+    nio4r (2.5.7)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     nokogiri (1.10.9-x64-mingw32)
@@ -309,7 +311,7 @@ GEM
       thor
       thread_safe
     public_suffix (4.0.5)
-    puma (4.3.5)
+    puma (4.3.8)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -472,7 +474,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   metric_fu
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.3, >= 6.0.3.1)
   rspec-core!
   rspec-expectations!
